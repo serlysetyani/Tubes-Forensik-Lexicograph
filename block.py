@@ -115,3 +115,6 @@ class block(object):
         characteristic_list.append(float(c5_1) / float(c5_1 + c5_2))
         characteristic_list.append(float(c6_1) / float(c6_1 + c6_2))
         characteristic_list.append(float(c7_1) / float(c7_1 + c7_2))
+
+        result = [round(element, precision) for element in characteristic_list]
+        return result
