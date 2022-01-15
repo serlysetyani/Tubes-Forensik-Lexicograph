@@ -1,4 +1,4 @@
-import copy_move_detection.image_object
+import lexicograph.imageobject
 from pathlib import Path
 
 
@@ -23,7 +23,7 @@ def detect(input_path, output_path, block_size=32):
         print("Error: Output Directory did not exist.")
         exit(1)
 
-    single_image = copy_move_detection.image_object.ImageObject(
+    single_image = lexicograph.imageobject.ImageObject(
         input_path, filename, output_path, block_size)
     image_result_path = single_image.run()
 

@@ -1,5 +1,5 @@
-import copy_move_detection.container
-import copy_move_detection.block
+import lexicograph.container
+import lexicograph.block
 
 from PIL import Image
 import imageio
@@ -71,8 +71,8 @@ class ImageObject(object):
         print(self.Nb, self.is_rgb_image)
 
         # container initialization to later contains several data
-        self.features_container = copy_move_detection.container.Container()
-        self.block_pair_container = copy_move_detection.container.Container()
+        self.features_container = lexicograph.container.Container()
+        self.block_pair_container = lexicograph.container.Container()
         self.offset_dictionary = {}
 
     def run(self):
@@ -125,7 +125,7 @@ class ImageObject(object):
                         (i, j, i + self.block_dimension, j + self.block_dimension))
                     image_block_grayscale = self.image_grayscale.crop(
                         (i, j, i + self.block_dimension, j + self.block_dimension))
-                    image_block = copy_move_detection.block.Blocks(
+                    image_block = lexicograph.block.Blocks(
                         image_block_grayscale, image_block_rgb, i, j, self.block_dimension)
                     self.features_container.append_block(
                         image_block.compute_block())
@@ -134,7 +134,7 @@ class ImageObject(object):
                 for j in range(image_height_overlap + 1):
                     image_block_grayscale = self.image_data.crop(
                         (i, j, i + self.block_dimension, j + self.block_dimension))
-                    image_block = copy_move_detection.block.Blocks(
+                    image_block = lexicograph.block.Blocks(
                         image_block_grayscale, None, i, j, self.block_dimension)
                     self.features_container.append_block(
                         image_block.compute_block())
